@@ -1,2 +1,2 @@
-# potato-wasteland
+# Potato Wasteland
 Atomic Potato Game
