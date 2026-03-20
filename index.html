@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Potato Wasteland 2</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Space+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
+  </head>
+  <body>
+    <main class="layout">
+      <section class="hero-panel">
+        <div class="figma-link-target" data-figma-node="1:5" title="Shift+Click to open this section in Figma">
+          <p class="eyebrow">Atomic potato action RPG</p>
+          <h1>Potato Wasteland 2</h1>
+          <p class="intro">
+            Roll across the craterlands as Spud-42, the last potato to survive the atomic fire.
+            Fight mutant rats and insects, scavenge irradiated gear, and let every weapon and armor
+            piece unlock a new combat skill.
+          </p>
+        </div>
+
+        <div class="hud-grid">
+          <article class="card figma-link-target" data-figma-node="1:42" title="Shift+Click to open this card in Figma">
+            <h2>Equipment</h2>
+            <div id="equipmentList" class="equipment-grid"></div>
+          </article>
+
+          <article class="card figma-link-target" data-figma-node="1:76" title="Shift+Click to open this card in Figma">
+            <h2>Mission</h2>
+            <p id="objectiveText" class="small-copy">
+              Survive, gear up, and defeat the Atomic Rat King when it emerges.
+            </p>
+            <div id="log" class="log" aria-live="polite"></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="game-panel">
+        <div class="controls figma-link-target" data-figma-node="1:97" title="Shift+Click to open this control bar in Figma">
+          <span>Arrow keys move</span>
+          <span>`Space` dodge roll</span>
+          <span>`Q W E R` use equipped skills</span>
+          <span>`1 2` drink potions</span>
+          <div class="audio-controls">
+            <label for="volumeSlider">Volume</label>
+            <input id="volumeSlider" type="range" min="0" max="100" value="65" />
+            <button id="muteButton" class="audio-button" type="button">Mute</button>
+            <button id="unmuteButton" class="audio-button" type="button">Unmute</button>
+          </div>
+        </div>
+        <div class="game-shell">
+          <canvas
+            id="game"
+            class="figma-link-target"
+            data-figma-node="1:110"
+            width="960"
+            height="600"
+            aria-label="Potato Wasteland 2 game canvas"
+            title="Shift+Click to open the canvas frame in Figma"
+          ></canvas>
+          <div class="game-top-hud">
+            <article class="top-vitals figma-link-target" data-figma-node="1:16" title="Shift+Click to open this card in Figma">
+              <div class="meter-group">
+                <label for="healthBar">Health</label>
+                <progress id="healthBar" max="100" value="100"></progress>
+                <span id="healthText">100 / 100</span>
+              </div>
+              <div class="meter-group">
+                <label for="manaBar">Mana</label>
+                <progress id="manaBar" max="100" value="100"></progress>
+                <span id="manaText">100 / 100</span>
+              </div>
+              <p id="xpText" class="small-copy">Level 1 • XP 0 / 50</p>
+              <p id="potionText" class="small-copy hidden-copy">Health Potions: 2 • Mana Potions: 2</p>
+            </article>
+          </div>
+          <div id="screenBlood" class="screen-blood" aria-hidden="true"></div>
+          <div id="skillBar" class="skill-bar"></div>
+          <div id="gameOverlay" class="game-overlay">
+            <div class="overlay-card">
+              <p id="overlayEyebrow" class="eyebrow">Potato Wasteland 2</p>
+              <h2 id="overlayTitle">Start Run</h2>
+              <p id="overlayText" class="intro">Prepare to roll into the wasteland.</p>
+              <button id="overlayButton" class="overlay-button" type="button">Start Game</button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script type="module">
+      import * as THREE from "./vendor/three.module.min.js";
+      window.THREE = THREE;
+      await import("./game.js");
+    </script>
+  </body>
+</html>
